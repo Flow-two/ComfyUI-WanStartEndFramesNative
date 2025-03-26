@@ -16,3 +16,8 @@ End Image
 Final Result
 
 ![Wan_00002](https://github.com/user-attachments/assets/2cbde9cf-ff7b-4b9a-af31-3a2710ac3393)
+
+
+Reference
+https://github.com/kijai/ComfyUI-WanVideoWrapper
+https://github.com/raindrop313/ComfyUI-WanVideoStartEndFrames

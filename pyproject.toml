@@ -1,0 +1,15 @@
+[project]
+name = "ComfyUI-WanStartEndFramesNative"
+description = "Start and end frames video generation node that supports native ComfyUI."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/Flow-two/ComfyUI-WanStartEndFramesNative"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "flow2"
+DisplayName = "ComfyUI-WanStartEndFramesNative"
+Icon = ""

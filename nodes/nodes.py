@@ -166,10 +166,11 @@ class WanImageToVideo_F2:
             vae.first_stage_model.encode = WanVaeWrapper_F2(vae.first_stage_model, end_image).encode
 
         la = vae.encode(concatenated)
-        print(1 + bool(valid_end_image))
+
         latent = torch.zeros([1, 16, ((length - 1) // 4) + (1 + bool(valid_end_image)), height // 8, width // 8], device=device)
 
         mask = torch.ones((1, 1, latent.shape[2], la.shape[-2], la.shape[-1]), device=device)
+
         mask[:, :, :1] = 0.0
         if valid_end_image:
             mask[:, :, -1:] = 0.0
@@ -184,3 +185,25 @@ class WanImageToVideo_F2:
         out_latent = {}
         out_latent["samples"] = latent
         return (positive, negative, out_latent)
+    
+class GetImagesFromBatchRanged_F2:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": {"images": ("IMAGE", ),
+                "start_percent": ("FLOAT", {"default": 0.00, "min": 0.00, "max": 1.00, "step": 0.01, "round": 0.01}),
+                "end_percent": ("FLOAT", {"default": 1.00, "min": 0.00, "max": 1.00, "step": 0.01, "round": 0.01}),
+                }}
+
+    RETURN_TYPES = ("IMAGE", )
+    FUNCTION = "range"
+
+    CATEGORY = "Flow2/Wan 2.1"
+
+    def range(self, images, start_percent, end_percent):
+        count = len(images)
+        
+        start_index = round(count * start_percent)
+        end_index = round(count * end_percent)
+
+        images = images[start_index:end_index]
+        return (images, )

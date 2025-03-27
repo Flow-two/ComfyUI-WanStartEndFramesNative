@@ -147,7 +147,8 @@ class WanImageToVideo_F2:
     CATEGORY = "Flow2/Wan 2.1"
 
     def encode(self, positive, negative, vae, width, height, length, start_image=None, end_image=None, clip_vision_output=None):
-        device = mm.intermediate_device()
+        offload_device = mm.unet_offload_device()
+        device = offload_device
 
         valid_end_image = end_image is not None
 

@@ -403,67 +403,6 @@
       ]
     },
     {
-      "id": 53,
-      "type": "KSampler",
-      "pos": [
-        2180,
-        -1500
-      ],
-      "size": [
-        315,
-        571
-      ],
-      "flags": {},
-      "order": 22,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 176
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 185
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 186
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 187
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            193
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "KSampler"
-      },
-      "widgets_values": [
-        928474147271562,
-        "randomize",
-        20,
-        4,
-        "euler",
-        "simple",
-        1,
-        ""
-      ]
-    },
-    {
       "id": 38,
       "type": "VHS_VideoCombine",
       "pos": [
@@ -705,49 +644,6 @@
       ]
     },
     {
-      "id": 54,
-      "type": "WanVideoTeaCacheKJ",
-      "pos": [
-        1900,
-        -1890
-      ],
-      "size": [
-        340.20001220703125,
-        154
-      ],
-      "flags": {},
-      "order": 20,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 172
-        }
-      ],
-      "outputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "links": [
-            175
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-kjnodes",
-        "ver": "a5bd3c86c8ed6b83c55c2d0e7a59515b15a0137f",
-        "Node name for S&R": "WanVideoTeaCacheKJ"
-      },
-      "widgets_values": [
-        0.23000000000000007,
-        0.1,
-        1,
-        "offload_device",
-        "i2v_480"
-      ]
-    },
-    {
       "id": 55,
       "type": "TorchCompileModelWanVideo",
       "pos": [
@@ -973,8 +869,7 @@
       },
       "widgets_values": [
         "end.jpg",
-        "image",
-        ""
+        "image"
       ]
     },
     {
@@ -1113,7 +1008,112 @@
       "widgets_values": [
         "MODEL (select one):\nhttps://huggingface.co/city96/Wan2.1-I2V-14B-480P-gguf/tree/main\nhttps://huggingface.co/city96/Wan2.1-I2V-14B-720P-gguf/tree/main\nhttps://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files/diffusion_models\n\n\nCLIP (select one):\nhttps://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true\nhttps://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true\n\n\nCLIP VISION:\nhttps://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors?download=true\n\n\nVAE:\nhttps://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true\n\n\nLORA (example):\nhttps://civitai.com/models/1344352/gun-shooting-wan21-i2v-lora"
       ],
+      "color": "#432",
+      "bgcolor": "#653",
       "shape": 2
+    },
+    {
+      "id": 53,
+      "type": "KSampler",
+      "pos": [
+        2180,
+        -1500
+      ],
+      "size": [
+        315,
+        571
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 176
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 185
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 186
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 187
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            193
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        928474147271562,
+        "randomize",
+        20,
+        4,
+        "uni_pc",
+        "sgm_uniform",
+        1
+      ]
+    },
+    {
+      "id": 54,
+      "type": "WanVideoTeaCacheKJ",
+      "pos": [
+        1900,
+        -1890
+      ],
+      "size": [
+        340.20001220703125,
+        154
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 172
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            175
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "a5bd3c86c8ed6b83c55c2d0e7a59515b15a0137f",
+        "Node name for S&R": "WanVideoTeaCacheKJ"
+      },
+      "widgets_values": [
+        0.23000000000000007,
+        0.1,
+        1,
+        "offload_device",
+        "i2v_480"
+      ]
     }
   ],
   "links": [
@@ -1354,10 +1354,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9713562380765651,
+      "scale": 0.8830511255241501,
       "offset": [
-        103.42137242231036,
-        2189.838184971042
+        -734.2810306190756,
+        2041.1040821679512
       ]
     },
     "VHS_latentpreview": true,

@@ -6,10 +6,12 @@ WEB_DIRECTORY = "./web"
 
 NODE_CLASS_MAPPINGS = {
     "WanImageToVideo_F2":           WanImageToVideo_F2,
-    "GetImagesFromBatchRanged_F2":  GetImagesFromBatchRanged_F2
+    "GetImagesFromBatchRanged_F2":  GetImagesFromBatchRanged_F2,
+    "WanSkipEndFrameImages_F2":      WanSkipEndFrameImages_F2,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "WanImageToVideo_F2":           "WanImageToVideo (Flow2)",
-    "GetImagesFromBatchRanged_F2":  "Get Images From Batch Ranged"
+    "GetImagesFromBatchRanged_F2":  "Get Images From Batch Ranged",
+    "WanSkipEndFrameImages_F2":      "Wan Skip End Frame Images",
 }

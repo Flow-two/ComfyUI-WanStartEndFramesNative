@@ -11,7 +11,6 @@ Search for ComfyUI-WanStartEndFramesNative in the Comfyui manager custom node li
 ### Manual installation
 1. Go to comfyUI custom_nodes folder, `ComfyUI/custom_nodes/`
 2. git clone https://github.com/Flow-two/ComfyUI-WanStartEndFramesNative.git
-Done.
 
 ## Preview Result
 ### Start Image

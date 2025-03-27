@@ -518,13 +518,13 @@
           "hidden": false,
           "paused": false,
           "params": {
-            "filename": "Wan_00051.mp4",
+            "filename": "Wan_00052.mp4",
             "subfolder": "",
             "type": "output",
             "format": "video/h264-mp4",
             "frame_rate": 16,
-            "workflow": "Wan_00051.png",
-            "fullpath": "D:\\ai\\ComfyUI_windows_portable\\ComfyUI\\output\\Wan_00051.mp4"
+            "workflow": "Wan_00052.png",
+            "fullpath": "D:\\ai\\ComfyUI_windows_portable\\ComfyUI\\output\\Wan_00052.mp4"
           }
         }
       }
@@ -977,6 +977,84 @@
       "bgcolor": "#3f5159"
     },
     {
+      "id": 48,
+      "type": "ModelSamplingSD3",
+      "pos": [
+        1000,
+        -1940
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 265
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            158
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "ModelSamplingSD3"
+      },
+      "widgets_values": [
+        8.000000000000002
+      ]
+    },
+    {
+      "id": 94,
+      "type": "WanSkipEndFrameImages_F2",
+      "pos": [
+        2510,
+        -1500
+      ],
+      "size": [
+        240,
+        58
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 260
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            261
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-WanStartEndFramesNative",
+        "ver": "7ee27a33536ff32afcb9e52d528a3f73a3622440",
+        "Node name for S&R": "WanSkipEndFrameImages_F2"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
       "id": 56,
       "type": "WanImageToVideo_F2",
       "pos": [
@@ -1055,85 +1133,7 @@
       "widgets_values": [
         480,
         480,
-        53
-      ]
-    },
-    {
-      "id": 48,
-      "type": "ModelSamplingSD3",
-      "pos": [
-        1000,
-        -1940
-      ],
-      "size": [
-        210,
-        58
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 265
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            158
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "ModelSamplingSD3"
-      },
-      "widgets_values": [
-        8.000000000000002
-      ]
-    },
-    {
-      "id": 94,
-      "type": "WanSkipEndFrameImages_F2",
-      "pos": [
-        2510,
-        -1500
-      ],
-      "size": [
-        240,
-        58
-      ],
-      "flags": {},
-      "order": 24,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 260
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            261
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-WanStartEndFramesNative",
-        "ver": "7ee27a33536ff32afcb9e52d528a3f73a3622440",
-        "Node name for S&R": "WanSkipEndFrameImages_F2"
-      },
-      "widgets_values": [
-        1
+        61
       ]
     }
   ],
@@ -1367,10 +1367,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.068491861884256,
+      "scale": 0.9713562380765963,
       "offset": [
-        -1651.6867577490518,
-        1617.8984711292796
+        -888.3853554506056,
+        1770.4848731587415
       ]
     },
     "VHS_latentpreview": true,

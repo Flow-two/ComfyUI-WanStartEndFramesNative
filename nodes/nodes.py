@@ -110,11 +110,19 @@ class WanImageToVideo_F2:
         la = vae.encode(concatenated)
     
         latent = torch.zeros([1, 16, ((length - 1) // 4) + 1 + int(valid_end_image), height // 8, width // 8], device=device)
-
-        mask = torch.ones((1, 1, latent.shape[2], la.shape[-2], la.shape[-1]), device=device)
-        mask[:, :, 0] = 0.0
+        
+        mask = torch.ones((1, length + int(valid_end_image), la.shape[-2], la.shape[-1]), device=device)
+        mask[:, 0] = 0.0
         if valid_end_image:
-            mask[:, :, -1] = 0.0
+            mask[:, -1] = 0.0
+
+        start_mask_repeated = torch.repeat_interleave(mask[:, 0:1], repeats=4, dim=1)
+        end_mask_repeated = torch.repeat_interleave(mask[:, -1:], repeats=4, dim=1)
+
+        mask = torch.cat([start_mask_repeated, mask[:, 1:-1], end_mask_repeated], dim=1)
+        mask = mask.view(1, mask.shape[1] // 4, 4, la.shape[-2], la.shape[-1])
+        mask = mask.movedim(1, 2)
+        mask = mask.repeat(1, 4, 1, 1, 1)
 
         positive = node_helpers.conditioning_set_values(positive, {"concat_latent_image": la, "concat_mask": mask})
         negative = node_helpers.conditioning_set_values(negative, {"concat_latent_image": la, "concat_mask": mask})

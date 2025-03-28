@@ -70,7 +70,7 @@ class WanImageToVideo_F2:
                              "vae": ("VAE", ),
                              "width": ("INT", {"default": 832, "min": 320, "max": nodes.MAX_RESOLUTION, "step": 16}),
                              "height": ("INT", {"default": 480, "min": 320, "max": nodes.MAX_RESOLUTION, "step": 16}),
-                             "length": ("INT", {"default": 81, "min": 21, "max": nodes.MAX_RESOLUTION, "step": 4}),
+                             "length": ("INT", {"default": 81, "min": 1, "max": 1000, "step": 4}),
                              "start_image": ("IMAGE", ),
                 },
                 "optional": {"end_image": ("IMAGE", ),
@@ -100,16 +100,16 @@ class WanImageToVideo_F2:
         if valid_end_image:
             resized_end_image = common_upscale(end_image.movedim(-1, 1), width, height, "bilinear", "center").movedim(1, -1)
 
-        latent = torch.zeros([1, 16, ((length - 1) // 4) + 1, height // 8, width // 8], device=device)
-
-        empty_frames = torch.ones(length - (1 + bool(valid_end_image)), height, width, 3, device=device) * 0.5
+        empty_frames = torch.ones(length - 1, height, width, 3, device=device) * 0.5
 
         if valid_end_image:
             concatenated = torch.cat([resized_start_image.to(device), empty_frames, resized_end_image.to(device)], dim=0)
         else:
             concatenated = torch.cat([resized_start_image.to(device), empty_frames], dim=0)
-
+            
         la = vae.encode(concatenated)
+    
+        latent = torch.zeros([1, 16, ((length - 1) // 4) + 1 + int(valid_end_image), height // 8, width // 8], device=device)
 
         mask = torch.ones((1, 1, latent.shape[2], la.shape[-2], la.shape[-1]), device=device)
         mask[:, :, 0] = 0.0
@@ -162,7 +162,10 @@ class WanSkipEndFrameImages_F2:
     CATEGORY = "Flow2/Wan 2.1"
 
     def skip(self, images, skip_end_frames):
-        images = (images - images.min()) / (images.max() - images.min()) 
-        images = images[0:-skip_end_frames]
+        images = (images - images.min()) / (images.max() - images.min())
+
+        if skip_end_frames > 0:
+            images = images[0:-skip_end_frames]
+
         images = torch.clamp(images, 0.0, 1.0)
         return (images, )
